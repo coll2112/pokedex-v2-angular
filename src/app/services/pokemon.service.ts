@@ -1,5 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { forkJoin, Observable, Subscriber, Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 
 import { Pokemon, PokemonInitResponse } from './pokemon.model';

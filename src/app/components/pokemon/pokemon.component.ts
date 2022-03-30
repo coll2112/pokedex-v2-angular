@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { map } from 'rxjs';
 import { Pokemon, PokemonInitResponse } from 'src/app/services/pokemon.model';
 import { PokemonService } from 'src/app/services/pokemon.service';
 
@@ -21,7 +20,10 @@ export class PokemonComponent implements OnInit {
       data.results.forEach((result: Pokemon) => {
         this.pokemonService
           .getPokemonDetails(result.name)
-          .subscribe((data: Pokemon) => this.pokemon.push(data));
+          .subscribe((data: Pokemon) => {
+            this.pokemon.push(data);
+            this.pokemon = this.pokemon.sort((a, b) => a.id - b.id);
+          });
       })
     );
   }
