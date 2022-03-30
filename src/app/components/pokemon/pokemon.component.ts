@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Pokemon, PokemonInitResponse } from 'src/app/services/pokemon.model';
+import {
+  Pokemon,
+  PokemonInitResponse,
+  PokemonInitResults,
+} from 'src/app/services/pokemon.model';
 import { PokemonService } from 'src/app/services/pokemon.service';
 
 @Component({
@@ -17,7 +21,7 @@ export class PokemonComponent implements OnInit {
     // use the Pokemon name returned in the initial API call to get the
     // details for that corrosponding Pokemon
     this.pokemonService.getPokemon().subscribe((data: PokemonInitResponse) =>
-      data.results.forEach((result: Pokemon) => {
+      data.results.forEach((result: PokemonInitResults) => {
         this.pokemonService
           .getPokemonDetails(result.name)
           .subscribe((data: Pokemon) => {

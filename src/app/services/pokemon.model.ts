@@ -2,7 +2,12 @@ export interface PokemonInitResponse {
   count: number;
   next?: string;
   previous?: string;
-  results: Pokemon[];
+  results: PokemonInitResults[];
+}
+
+export interface PokemonInitResults {
+  name: string;
+  url: string;
 }
 
 export interface Pokemon {
