@@ -25,6 +25,7 @@
     border-radius: 5rem;
     padding: 0.5rem;
     transition: background-color 0.2s ease-in-out;
+    width: 125px;
   }
 
   &:hover {
@@ -36,20 +37,17 @@
   }
 }
 
-.info {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  font-size: 1.1rem;
-  margin-bottom: 0.5rem;
-}
-
 .id {
-  margin-right: 0.5rem;
+  margin-bottom: 0.3rem;
+  width: 100%;
+  font-size: 1.2rem;
+  font-weight: 600;
 }
 
 .name {
   text-transform: capitalize;
+  margin-top: 0.5rem;
+  font-size: 1.1rem;
 }
 
 .loading {
