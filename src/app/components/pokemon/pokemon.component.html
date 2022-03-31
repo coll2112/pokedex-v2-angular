@@ -1,6 +1,17 @@
-<div *ngFor="let p of pokemon" [routerLink]="[p.name]">
-  <img [src]="p.sprites.front_default" />
-  <p>
-    {{ p.name }}
-  </p>
+<div class="container" *ngIf="!isLoading; else loadingText">
+  <div *ngFor="let p of pokemon" [routerLink]="[p.name]" class="tile">
+    <div class="info">
+      <p class="id">#{{ p.id }}</p>
+      <p class="name">
+        {{ p.name }}
+      </p>
+    </div>
+    <img [src]="p.sprites.front_default" />
+  </div>
 </div>
+
+<ng-template #loadingText>
+  <div class="loading">
+    <p>Catching Pokemon...</p>
+  </div>
+</ng-template>

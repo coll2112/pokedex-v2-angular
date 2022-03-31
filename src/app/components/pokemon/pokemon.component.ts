@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { finalize } from 'rxjs';
 import {
   Pokemon,
   PokemonInitResponse,
@@ -13,10 +14,13 @@ import { PokemonService } from 'src/app/services/pokemon.service';
 })
 export class PokemonComponent implements OnInit {
   pokemon: Pokemon[] = [];
+  isLoading: boolean = false;
 
   constructor(private pokemonService: PokemonService) {}
 
   ngOnInit(): void {
+    this.isLoading = true;
+
     // Fetches all Pokemon with getPokemon, then uses getPokemonDetails to
     // use the Pokemon name returned in the initial API call to get the
     // details for that corrosponding Pokemon
@@ -24,6 +28,7 @@ export class PokemonComponent implements OnInit {
       data.results.forEach((result: PokemonInitResults) => {
         this.pokemonService
           .getPokemonDetails(result.name)
+          .pipe(finalize(() => (this.isLoading = false)))
           .subscribe((data: Pokemon) => {
             this.pokemon.push(data);
             this.pokemon = this.pokemon.sort((a, b) => a.id - b.id);
