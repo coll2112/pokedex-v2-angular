@@ -1,3 +1,6 @@
-<p *ngFor="let p of pokemon" [routerLink]="[p.name]">
-  {{ p.name }}
-</p>
+<div *ngFor="let p of pokemon" [routerLink]="[p.name]">
+  <img [src]="p.sprites.front_default" />
+  <p>
+    {{ p.name }}
+  </p>
+</div>
