@@ -1,0 +1,18 @@
+<div class="container">
+  <h2>Pokedex</h2>
+  <div class="searchInputContainer">
+    <input
+      type="text"
+      [(ngModel)]="searchInput"
+      placeholder="Pokemon Name or ID"
+    />
+    <button (click)="handleSearch()" [disabled]="searchInput.length <= 0">
+      Search
+    </button>
+    <div class="dropdown-container">
+      <p *ngFor="let p of pokemon" [routerLink]="['pokedex', p.name]">
+        {{ p.name }}
+      </p>
+    </div>
+  </div>
+</div>
