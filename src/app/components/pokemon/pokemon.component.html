@@ -1,6 +1,6 @@
 <div class="container" *ngIf="!isLoading; else loadingText">
   <div *ngFor="let p of pokemon" [routerLink]="[p.name]" class="tile">
-    <p class="id"><sup>#</sup>{{ p.pokedexId }}</p>
+    <p class="id">{{ p.id | pokemonIdPrefix }}</p>
     <img [src]="p.sprites.front_default" />
     <p class="name">
       {{ p.name }}

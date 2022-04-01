@@ -28,13 +28,7 @@ export class PokemonComponent implements OnInit {
       data.results.forEach((result: PokemonInitResults) => {
         this.pokemonService
           .getPokemonDetails(result.name)
-          .pipe(
-            map((data: Pokemon) => ({
-              ...data,
-              pokedexId: data.id <= 9 ? `00${data.id}` : `0${data.id}`,
-            })),
-            finalize(() => (this.isLoading = false))
-          )
+          .pipe(finalize(() => (this.isLoading = false)))
           .subscribe((data: Pokemon) => {
             this.pokemon.push(data);
             console.log(data);

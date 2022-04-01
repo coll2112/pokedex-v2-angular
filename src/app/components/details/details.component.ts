@@ -43,10 +43,10 @@ export class DetailsComponent implements OnInit {
   }
 
   togglePokemonSprites() {
-    if (this.showShinySprites) {
-      this.showShinySprites = false;
-    } else {
+    if (!this.showShinySprites) {
       this.showShinySprites = true;
+    } else {
+      this.showShinySprites = false;
     }
   }
 }
