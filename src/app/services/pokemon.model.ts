@@ -17,6 +17,7 @@ export interface Pokemon {
   types: Types[];
   weight: number;
   height: number;
+  pokedexId?: string;
 }
 
 interface Sprites {

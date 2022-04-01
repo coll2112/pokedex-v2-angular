@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { finalize } from 'rxjs';
+import { finalize, map } from 'rxjs';
 import {
   Pokemon,
   PokemonInitResponse,
@@ -24,13 +24,20 @@ export class PokemonComponent implements OnInit {
     // Fetches all Pokemon with getPokemon, then uses getPokemonDetails to
     // use the Pokemon name returned in the initial API call to get the
     // details for that corrosponding Pokemon
-    this.pokemonService.getPokemon().subscribe((data: PokemonInitResponse) =>
+    this.pokemonService.getPokemon(15).subscribe((data: PokemonInitResponse) =>
       data.results.forEach((result: PokemonInitResults) => {
         this.pokemonService
           .getPokemonDetails(result.name)
-          .pipe(finalize(() => (this.isLoading = false)))
+          .pipe(
+            map((data: Pokemon) => ({
+              ...data,
+              pokedexId: data.id <= 9 ? `00${data.id}` : `0${data.id}`,
+            })),
+            finalize(() => (this.isLoading = false))
+          )
           .subscribe((data: Pokemon) => {
             this.pokemon.push(data);
+            console.log(data);
             this.pokemon = this.pokemon.sort((a, b) => a.id - b.id);
           });
       })

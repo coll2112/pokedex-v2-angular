@@ -1,13 +1,10 @@
 <div class="container" *ngIf="!isLoading; else loadingText">
   <div *ngFor="let p of pokemon" [routerLink]="[p.name]" class="tile">
-    <p class="id"><sup>#</sup>{{ p.id }}</p>
+    <p class="id"><sup>#</sup>{{ p.pokedexId }}</p>
     <img [src]="p.sprites.front_default" />
-
-    <div class="info">
-      <p class="name">
-        {{ p.name }}
-      </p>
-    </div>
+    <p class="name">
+      {{ p.name }}
+    </p>
   </div>
 </div>
 
