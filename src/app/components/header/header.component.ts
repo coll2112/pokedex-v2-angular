@@ -4,6 +4,7 @@ import {
   PokemonInitResponse,
   PokemonInitResults,
 } from 'src/app/services/pokemon.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -13,8 +14,9 @@ import {
 export class HeaderComponent implements OnInit {
   pokemon: PokemonInitResults[] = [];
   searchInput: string = '';
+  pokemonFilter: PokemonInitResults[] = [];
 
-  constructor(private pokemonService: PokemonService) {}
+  constructor(private pokemonService: PokemonService, private router: Router) {}
 
   ngOnInit(): void {
     this.pokemonService
@@ -22,9 +24,16 @@ export class HeaderComponent implements OnInit {
       .subscribe((data: PokemonInitResponse) => (this.pokemon = data.results));
   }
 
+  viewPokemonDetails(pokemon: string) {
+    this.searchInput = '';
+    this.router.navigate(['pokedex', pokemon]);
+  }
+
+  handleChange() {
+    this.pokemonFilter = this.pokemon
+      .filter((p) => p.name.startsWith(this.searchInput))
+      .splice(0, 5);
+  }
+
   handleSearch() {}
-
-  handleChange() {}
-
-  handleResultsClick() {}
 }

@@ -31,7 +31,6 @@ export class PokemonComponent implements OnInit {
           .pipe(finalize(() => (this.isLoading = false)))
           .subscribe((data: Pokemon) => {
             this.pokemon.push(data);
-            console.log(data);
             this.pokemon = this.pokemon.sort((a, b) => a.id - b.id);
           });
       })
