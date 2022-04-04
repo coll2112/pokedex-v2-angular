@@ -12,26 +12,42 @@
 
   & > h2 {
     font-size: 2rem;
+    cursor: pointer;
   }
 }
 
 .searchInputContainer {
   position: relative;
+  height: 35px;
 
   & > input {
-    border: none;
+    background: #a04545;
+    border-left: 1px solid #fff;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+    border-right: none;
     padding: 0.3rem;
-    height: 25px;
+    // height: 35px;
+    height: 100%;
+
+    &::placeholder {
+      color: #fff;
+    }
   }
 
   & > button {
-    height: 25px;
+    height: 100%;
     cursor: pointer;
     padding: 0.3rem 1rem;
     border: none;
     background: #9e2626;
     color: #fff;
     border-radius: 0 3px 3px 0;
+    border: 1px solid #fff;
+    // border-right: 1px solid #fff;
+    // border-top: 1px solid #fff;
+    // border-bottom: 1px solid #fff;
+    // border-left: none;
     transition: background-color linear 0.1s;
 
     &:hover {

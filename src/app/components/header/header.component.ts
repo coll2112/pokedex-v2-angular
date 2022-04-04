@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { PokemonService } from 'src/app/services/pokemon.service';
 import {
   PokemonInitResponse,
   PokemonInitResults,
 } from 'src/app/services/pokemon.model';
-import { PokemonService } from 'src/app/services/pokemon.service';
 
 @Component({
   selector: 'app-header',
@@ -22,7 +22,9 @@ export class HeaderComponent implements OnInit {
       .subscribe((data: PokemonInitResponse) => (this.pokemon = data.results));
   }
 
-  handleSearch() {
-    console.log(this.searchInput);
-  }
+  handleSearch() {}
+
+  handleChange() {}
+
+  handleResultsClick() {}
 }

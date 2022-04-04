@@ -1,15 +1,16 @@
 <div class="container">
-  <h2>Pokedex</h2>
+  <h2 routerLink="/pokedex">Pokedex</h2>
   <div class="searchInputContainer">
     <input
       type="text"
       [(ngModel)]="searchInput"
       placeholder="Pokemon Name or ID"
+      (ngModelChange)="handleChange()"
     />
     <button (click)="handleSearch()" [disabled]="searchInput.length <= 0">
       Search
     </button>
-    <div class="dropdown-container">
+    <div class="dropdown-container" *ngIf="searchInput.length > 0">
       <p *ngFor="let p of pokemon" [routerLink]="['pokedex', p.name]">
         {{ p.name }}
       </p>
