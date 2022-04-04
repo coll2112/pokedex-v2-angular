@@ -9,6 +9,8 @@ import { PokemonComponent } from './components/pokemon/pokemon.component';
 import { DetailsComponent } from './components/details/details.component';
 import { PokemonIdPrefixPipe } from './pipes/pokemonIdPrefix/pokemon-id-prefix.pipe';
 import { HeaderComponent } from './components/header/header.component';
+import { FormatHeightPipe } from './pipes/formatHeight/format-height.pipe';
+import { FormatWeightPipe } from './pipes/formatWeight/format-weight.pipe';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,8 @@ import { HeaderComponent } from './components/header/header.component';
     DetailsComponent,
     PokemonIdPrefixPipe,
     HeaderComponent,
+    FormatHeightPipe,
+    FormatWeightPipe,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],
